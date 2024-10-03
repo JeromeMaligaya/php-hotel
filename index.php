@@ -1,48 +1,3 @@
-<?php
-
-$hotels = [
-
-    [
-        'name' => 'Hotel Belvedere',
-        'description' => 'Hotel Belvedere Descrizione',
-        'parking' => true,
-        'vote' => 4,
-        'distance_to_center' => 10.4
-    ],
-    [
-        'name' => 'Hotel Futuro',
-        'description' => 'Hotel Futuro Descrizione',
-        'parking' => true,
-        'vote' => 2,
-        'distance_to_center' => 2
-    ],
-    [
-        'name' => 'Hotel Rivamare',
-        'description' => 'Hotel Rivamare Descrizione',
-        'parking' => false,
-        'vote' => 1,
-        'distance_to_center' => 1
-    ],
-    [
-        'name' => 'Hotel Bellavista',
-        'description' => 'Hotel Bellavista Descrizione',
-        'parking' => false,
-        'vote' => 5,
-        'distance_to_center' => 5.5
-    ],
-    [
-        'name' => 'Hotel Milano',
-        'description' => 'Hotel Milano Descrizione',
-        'parking' => true,
-        'vote' => 2,
-        'distance_to_center' => 50
-    ],
-
-];
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -61,40 +16,19 @@ $hotels = [
 <body>
     <main class="m-5">
         <div class="container">
-            <h1 class="text-center mb-4">php-hotel</h1>
-            <section>
-                <ul class="list-unstyled row justify-content-center flex-wrap">
-                    <?php foreach ($hotels as $hotel) { ?>
-                        <li class="mb-5 col-5">
-                            <div class="card w-100" style="width: 18rem;">
-                                <div class="card-header">
-                                    <h2><?php echo $hotel["name"]; ?></h2>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <p><?php echo $hotel["description"]; ?></p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <p>Parcheggio:
-                                            <span><?php echo $hotel["parking"] ? 'Disponibile' : 'non disponibile'; ?></span>
-                                        </p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <p>Voto:
-                                            <span><?php echo $hotel["vote"]; ?></span>
-                                        </p>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <p>Distanza dal centro:
-                                            <span><?php echo $hotel["distance_to_center"]; ?> km</span>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </section>
+            <h1 class="text-center mb-5">Form Hotels</h1>
+            <form action="process.php" method="GET">
+                <div class="mb-3">
+                    <label for="parking" class="form-label">Parcheggio:</label>
+                    <select name="parking" id="parking" class="form-select">
+                        <option selected disabled>scegli un opzione</option>
+                        <option value="all">Tutti</option>
+                        <option value="available">Disponibile</option>
+                        <option value="not_available">Non Disponibile</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Cerca</button>
+            </form>
         </div>
     </main>
 

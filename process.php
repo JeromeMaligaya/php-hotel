@@ -40,6 +40,10 @@ $hotels = [
 
 ];
 
+// collect the value of the select #parking
+$parking_filter = $_GET['parking'];
+var_dump($parking_filter)
+
 ?>
 
 
@@ -65,33 +69,33 @@ $hotels = [
             <section>
                 <ul class="list-unstyled row justify-content-center flex-wrap">
                     <?php foreach ($hotels as $hotel) { ?>
-                    <li class="mb-5 col-5">
-                        <div class="card w-100" style="width: 18rem;">
-                            <div class="card-header">
-                                <h2><?php echo $hotel["name"]; ?></h2>
+                        <li class="mb-5 col-5">
+                            <div class="card w-100" style="width: 18rem;">
+                                <div class="card-header">
+                                    <h2><?php echo $hotel["name"]; ?></h2>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <p><?php echo $hotel["description"]; ?></p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p>Parcheggio:
+                                            <span><?php echo $hotel["parking"] ? 'Disponibile' : 'non disponibile'; ?></span>
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p>Voto:
+                                            <span><?php echo $hotel["vote"]; ?></span>
+                                        </p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p>Distanza dal centro:
+                                            <span><?php echo $hotel["distance_to_center"]; ?> km</span>
+                                        </p>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <p><?php echo $hotel["description"]; ?></p>
-                                </li>
-                                <li class="list-group-item">
-                                    <p>Parcheggio:
-                                        <span><?php echo $hotel["parking"] ? 'Disponibile' : 'non disponibile'; ?></span>
-                                    </p>
-                                </li>
-                                <li class="list-group-item">
-                                    <p>Voto:
-                                        <span><?php echo $hotel["vote"]; ?></span>
-                                    </p>
-                                </li>
-                                <li class="list-group-item">
-                                    <p>Distanza dal centro:
-                                        <span><?php echo $hotel["distance_to_center"]; ?> km</span>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                        </li>
                     <?php } ?>
                 </ul>
             </section>

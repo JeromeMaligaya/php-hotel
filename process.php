@@ -42,7 +42,27 @@ $hotels = [
 
 // collect the value of the select #parking
 $parking_filter = $_GET['parking'];
-var_dump($parking_filter)
+var_dump($parking_filter);
+
+// new array for filters
+$filtered_hotels = [];
+
+// add the hotels in array $filtered_hotels based on filter of parking
+if ($parking_filter === 'available') {
+    foreach ($hotels as $hotel) {
+        if ($hotel['parking'] === true) {
+            $filtered_hotels[] = $hotel;
+        }
+    }
+} elseif ($parking_filter === 'not_available') {
+    foreach ($hotels as $hotel) {
+        if ($hotel['parking'] === false) {
+            $filtered_hotels[] = $hotel;
+        }
+    }
+} else {
+    $filtered_hotels = $hotels;
+}
 
 ?>
 
@@ -68,7 +88,7 @@ var_dump($parking_filter)
             <h1 class="text-center mb-4">php-hotel</h1>
             <section>
                 <ul class="list-unstyled row justify-content-center flex-wrap">
-                    <?php foreach ($hotels as $hotel) { ?>
+                    <?php foreach ($filtered_hotels as $hotel) { ?>
                         <li class="mb-5 col-5">
                             <div class="card w-100" style="width: 18rem;">
                                 <div class="card-header">
